@@ -2,16 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>SSE Go</title>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <title>SSE Events</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/events/css/main.css">
+  <link rel="stylesheet" href="/events/css/application.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/history.js/1.8/compressed/history.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/history.js/1.8/compressed/history.adapter.native.min.js"></script>
   <script src="https://apis.google.com/js/api:client.js" async defer></script>
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+  <div id="outer_container">
+    <div id="top_nav_wrapper">
+      <div id="top_nav">
+        <a href="/">
+          <img alt="Society of Software Engineers" id="logo" src="/events/images/logo-white.png" />
+        </a>
+        <div id="nav_links">
+          <a href="/blog/">BLOG</a>
+          <a href="/events/">EVENTS</a>
+          <a href="/committees/projects">PROJECTS</a>
+          <ul>
+            <li class="dropdown" id="committees-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">ABOUT <b class='caret'></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/about">About the SSE</a></li>
+                <li><a href="/about/officers">Officers</a></li>
+                <li class="divider"></li>
+                <li><a href="/constitution">Constitution</a></li>
+                <li><a href="/primary-officers-policy">Primary Officers' Policy</a></li>
+                <li class="divider"></li>
+                <li><a href="/committees/mentoring">Mentoring</a></li>
+                <li><a href="/committees/fundraising">Fundraising</a></li>
+                <li><a href="/committees/intramurals">Intramurals</a></li>
+                <li><a href="/committees/pr">Public Relations</a></li>
+                <li><a href="/committees/events">Events</a></li>
+                <li><a href="/committees/vise">ViSE</a></li>
+                <li><a href="/committees/talks">Talks</a></li>
+                <li class="divider"></li>
+                <li><a href="/about/sponsors">Sponsors</a></li>
+                <li><a href="/social">Follow The SSE</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
   <div id="app"></div>
+  <div id="footer">
+    All content is Copyright &copy; 2015 Society of Software Engineers.
+  </div>
   <script src="/events/js/main.js"></script>
 </body>
 </html>

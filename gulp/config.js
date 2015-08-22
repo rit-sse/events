@@ -2,6 +2,7 @@
 
 export default {
   build: {
+    images: './dist/images',
     css: './dist/css',
     js: './dist/js',
     jsMain: './dist/js/main.js',
@@ -9,7 +10,8 @@ export default {
   },
 
   source: {
-    css: './app/css/**.css',
+    images: './app/images/**/*.png',
+    scss: './app/scss/application.scss',
     jsMain: './app/js/app.jsx',
     scripts: './app/js/**/*.@(js|jsx)',
     html: './app/index.html',
