@@ -32,7 +32,7 @@ export default {
 
   updateEvent: {
     remote(state, index, body) {
-      return Promise.all([index, api.Events.update(state.eventData.data[index].id, body)]);
+      return Promise.all([index, api.Events.update(state.events.data[index].id, body)]);
     },
     success: EventsActions.updateEventSuccess,
     error: EventsActions.updateEventFailed,
@@ -40,7 +40,7 @@ export default {
 
   destroyEvent: {
     remote(state, index) {
-      return Promise.all([index, api.Events.destroy(state.linkData.data[index].shortEvent)]);
+      return Promise.all([index, api.Events.destroy(state.events.data[index].shortEvent)]);
     },
     success: EventsActions.destroyEventSuccess,
     error: EventsActions.destroyEventFailed,

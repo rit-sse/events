@@ -5,19 +5,27 @@ import AuthActions from '../actions/auth';
 import AuthSource from '../sources/auth';
 import EventsActions from '../actions/events';
 import EventsSource from '../sources/events';
+import CommitteesActions from '../actions/committees';
+import CommitteesSource from '../sources/committees';
+import SelectActions from '../actions/select';
 
 class SSEStore {
   constructor() {
     this.loggedIn = false;
     this.err = null;
-    this.eventData = { data: [] };
+    this.events = { data: [] };
+    this.committees = { data: [] };
+    this.selected = null;
     this.status = null;
 
     this.registerAsync(AuthSource);
     this.registerAsync(EventsSource);
+    this.registerAsync(CommitteesSource);
 
     this.bindActions(AuthActions);
     this.bindActions(EventsActions);
+    this.bindActions(CommitteesActions);
+    this.bindActions(SelectActions);
   }
 
   setError(err) {
@@ -50,8 +58,19 @@ class SSEStore {
     this.loggedIn = false;
   }
 
+  onGetCommitteesSuccess(payload) {
+    this.committees = payload;
+    this.status = null;
+    this.err = null;
+  }
+
+  onGetCommitteesFailed(err) {
+    this.setError(err);
+  }
+
+
   onGetEventsSuccess(payload) {
-    this.linkData = payload;
+    this.events = payload;
     this.status = null;
     this.err = null;
   }
@@ -61,8 +80,8 @@ class SSEStore {
   }
 
   onCreateEventSuccess(payload) {
-    if (parseInt(this.linkData.currentPage, 10) === 1) {
-      this.linkData.data.unshift(payload);
+    if (parseInt(this.events.currentPage, 10) === 1) {
+      this.events.data.unshift(payload);
     }
     this.setStatus({ message: 'Successfully created a go link' });
   }
@@ -72,7 +91,7 @@ class SSEStore {
   }
 
   onUpdateEventSuccess(payload) {
-    this.linkData.data.splice(payload[0], 1, payload[1]);
+    this.events.data.splice(payload[0], 1, payload[1]);
     this.setStatus({ message: 'Successfully updated a go link' });
   }
 
@@ -81,13 +100,17 @@ class SSEStore {
   }
 
   onDestroyEventSuccess(payload) {
-    this.linkData.data.splice(payload[0], 1);
-    this.linkData.total--;
+    this.events.data.splice(payload[0], 1);
+    this.events.total--;
     this.setStatus({ message: 'Successfully deleted a go link' });
   }
 
   onDestroyEventFailed(err) {
     this.setError(err);
+  }
+
+  onSetSelected(selected) {
+    this.selected = selected;
   }
 }
 
