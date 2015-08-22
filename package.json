@@ -1,0 +1,49 @@
+{
+  "name": "sse-events",
+  "version": "1.0.0",
+  "description": "SSE Events front end",
+  "contributors": [
+    {
+      "name": "Kristen Mills",
+      "email": "kristen@kristen-mills.com"
+    }
+  ],
+  "main": "server.js",
+  "scripts": {
+    "start": "babel-node ./bin/www",
+    "watch": "gulp",
+    "build": "gulp build",
+  "lint": "eslint . --ext .jsx,.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/rit-sse/events.git"
+  },
+  "author": "Society of Software Engineers",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rit-sse/events/issues"
+  },
+  "homepage": "https://github.com/rit-sse/events#readme",
+  "dependencies": {
+    "alt": "^0.17.1",
+    "babel": "^5.8.21",
+    "babelify": "^6.2.0",
+    "browserify": "^11.0.1",
+    "envify": "^3.4.0",
+    "express": "^4.13.3",
+    "gulp": "^3.9.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-uglify": "^1.2.0",
+    "react": "^0.13.3",
+    "require-dir": "^0.3.0",
+    "sse-api-client": "rit-sse/api-client",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.0.10",
+    "eslint": "^1.2.1",
+    "eslint-plugin-react": "^3.2.3"
+  }
+}
