@@ -2,20 +2,32 @@
 
 import api from '../api';
 import EventsActions from '../actions/events';
-import querystring from 'querystring';
 
 export default {
   getEvents: {
-    remote() {
-      const query = querystring.parse(location.search.replace('?', ''));
+    remote(state) {
       const obj = {};
-      if (!isNaN(query.perPage)) {
-        obj.perPage = query.perPage;
+
+      if (!isNaN(state.filters.perPage)) {
+        obj.perPage = state.filters.perPage;
       }
 
-      if (!isNaN(query.page)) {
-        obj.page = query.page;
+      if (!isNaN(state.filters.page)) {
+        obj.page = state.filters.page;
       }
+      if (state.filters.when === 'past') {
+        obj.before = new Date();
+        obj.sort = 'DESC';
+      } else if (state.filters.when === 'future') {
+        obj.after = new Date();
+        obj.sort = 'ASC';
+      } else {
+        obj.sort = 'DESC';
+      }
+      if (state.filters.committee) {
+        obj.committee = state.filters.committee;
+      }
+
       return api.Events.all(obj);
     },
     success: EventsActions.getEventsSuccess,

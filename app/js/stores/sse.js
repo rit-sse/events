@@ -8,6 +8,7 @@ import EventsSource from '../sources/events';
 import CommitteesActions from '../actions/committees';
 import CommitteesSource from '../sources/committees';
 import SelectActions from '../actions/select';
+import querystring from 'querystring';
 
 class SSEStore {
   constructor() {
@@ -15,7 +16,8 @@ class SSEStore {
     this.err = null;
     this.events = { data: [] };
     this.committees = { data: [] };
-    this.selected = null;
+    this.filters = querystring.parse(location.search.replace('?', ''));
+    this.filters.when = this.filters.when || 'future';
     this.status = null;
 
     this.registerAsync(AuthSource);
@@ -62,6 +64,7 @@ class SSEStore {
     this.committees = payload;
     this.status = null;
     this.err = null;
+
   }
 
   onGetCommitteesFailed(err) {
@@ -71,8 +74,11 @@ class SSEStore {
 
   onGetEventsSuccess(payload) {
     this.events = payload;
+    this.filters.page = payload.currentPage;
+    this.filters.perPage = payload.perPage;
     this.status = null;
     this.err = null;
+    History.pushState(this.filters, 'SSE Events', `?${querystring.stringify(this.filters)}`);
   }
 
   onGetEventsFailed(err) {
@@ -109,8 +115,11 @@ class SSEStore {
     this.setError(err);
   }
 
-  onSetSelected(selected) {
-    this.selected = selected;
+  onSetCommittee(committee) {
+    this.filters.committee = committee;
+  }
+  onSetWhen(when) {
+    this.filters.when = when;
   }
 }
 
