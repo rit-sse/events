@@ -12,7 +12,7 @@ export default class DestroyModal extends React.Component {
         close={this.props.close}
         closeText='No'
         submitText='Yes'
-        header=''
+        header='Are You Sure?'
         submit={this.props.destroy}
       >
         <p>Are You Sure?</p>
