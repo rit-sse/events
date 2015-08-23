@@ -52,7 +52,7 @@ export default {
 
   destroyEvent: {
     remote(state, index) {
-      return Promise.all([index, api.Events.destroy(state.events.data[index].shortEvent)]);
+      return Promise.all([index, api.Events.destroy(state.events.data[index].id)]);
     },
     success: EventsActions.destroyEventSuccess,
     error: EventsActions.destroyEventFailed,

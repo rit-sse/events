@@ -7,7 +7,7 @@ export default class EventList extends React.Component {
   render() {
     return(
       <div className='edit-list'>
-        {this.props.events.data.map(event => <Event event={event} loggedIn={this.props.loggedIn} />)}
+        {this.props.events.data.map((event, index) => <Event event={event} loggedIn={this.props.loggedIn} index={index} />)}
       </div>
     );
   }
