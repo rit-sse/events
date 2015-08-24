@@ -37,6 +37,7 @@
     "gulp-notify": "^2.2.0",
     "gulp-sass": "^2.0.4",
     "gulp-uglify": "^1.2.0",
+    "moment-timezone": "^0.4.0",
     "react": "^0.13.3",
     "require-dir": "^0.3.0",
     "sse-api-client": "rit-sse/api-client",

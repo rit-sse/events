@@ -2,22 +2,47 @@
 
 import React from 'react';
 import Modal from './modal';
+import '../bootstrap-datetimepicker';
+import moment from 'moment-timezone';
 
 export default class FormModal extends React.Component {
 
   constructor() {
     super();
-
+    this.state = {};
     this.submit = this.submit.bind(this);
   }
 
+  componentDidMount() {
+    const options = {
+      pickSeconds: false,
+      pick12HourFormat: true,
+    };
+
+    const startPicker = $(`#start-date-${this.props.event.id}`).datetimepicker(options).data('datetimepicker');
+    const endPicker = $(`#end-date-${this.props.event.id}`).datetimepicker(options).data('datetimepicker');
+
+    this.setState({
+      startPicker,
+      endPicker,
+    });
+
+    const date = new Date();
+
+    startPicker.setDate(new Date(this.props.event.startDate) || date);
+    endPicker.setDate(new Date(this.props.event.endDate) || date.setHours(date.getHours() + 1));
+  }
+
   submit() {
-    const event = ['name', 'startDate', 'endDate', 'description', 'location', 'image', 'committeeId']
+    const event = ['name', 'description', 'location', 'image', 'committeeId']
       .reduce((prev, key) => {
-        prev[key] = this.refs[key].getDOMNode().value;
+        prev[key] = this.refs[key].getDOMNode().value || null;
         return prev;
       }, {});
 
+    event.startDate = moment.tz(this.state.startPicker.getLocalDate(), 'America/New_York').utc().toDate();
+    event.endDate = moment.tz(this.state.endPicker.getLocalDate(), 'America/New_York').utc().toDate();
+    console.log(event);
     this.props.submit(event);
   }
 
@@ -41,13 +66,23 @@ export default class FormModal extends React.Component {
           <div className='control-group'>
             <label className='control-label' htmlFor='startDate'>Start Date</label>
             <div className='controls'>
-              <input type='date' id='startDate' placeholder='startDate' defaultValue={this.props.event.startDate} ref='startDate' />
+              <div className='datetimepicker input-append date' id={`start-date-${this.props.event.id}`} ref='startDate'>
+                <input data-format='yyyy-MM-dd HH:mm PP' type='text'/>
+                <span className='add-on'>
+                  <i data-time-icon='fa fa-clock-o' data-date-icon='fa fa-calendar'></i>
+                </span>
+              </div>
             </div>
           </div>
           <div className='control-group'>
             <label className='control-label' htmlFor='endDate'>End Date</label>
             <div className='controls'>
-              <input type='date' id='endDate' placeholder='endDate' defaultValue={this.props.event.endDate} ref='endDate' />
+              <div className='datetimepicker input-append date' id={`end-date-${this.props.event.id}`} ref='endDate'>
+                <input data-format='yyyy-MM-dd HH:mm PP' type='text' />
+                <span className='add-on'>
+                  <i data-time-icon='fa fa-clock-o' data-date-icon='fa fa-calendar'></i>
+                </span>
+              </div>
             </div>
           </div>
           <div className='control-group'>
