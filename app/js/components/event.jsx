@@ -3,7 +3,7 @@
 import React from 'react';
 import SSEStore from '../stores/sse';
 import DestroyModal from './destroy-modal';
-import EditModal from './edit-modal';
+import FormModal from './form-modal';
 
 export default class Event extends React.Component {
 
@@ -33,8 +33,8 @@ export default class Event extends React.Component {
     this.setState({ showDestroy: false });
   }
 
-  edit() {
-    SSEStore.updateEvent(this.props.index, this.state.event);
+  edit(event) {
+    SSEStore.updateEvent(this.props.index, event);
     this.hideEdit();
   }
 
@@ -75,11 +75,13 @@ export default class Event extends React.Component {
           show={this.state.showDestroy}
           close={this.hideDestroy}
           destroy={this.destroy} />
-        <EditModal
+        <FormModal
+          title='Edit'
           show={this.state.showEdit}
           close={this.hideEdit}
-          edit={this.edit}
-          committees={this.props.committees} />
+          submit={this.edit}
+          committees={this.props.committees}
+          event={this.props.event} />
         <div className='clear'></div>
       </div>
     );

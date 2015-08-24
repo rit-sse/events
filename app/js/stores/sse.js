@@ -89,7 +89,7 @@ class SSEStore {
     if (parseInt(this.events.currentPage, 10) === 1) {
       this.events.data.unshift(payload);
     }
-    this.setStatus({ message: 'Successfully created a go link' });
+    this.setStatus({ message: 'Successfully created an event.' });
   }
 
   onCreateEventFailed(err ) {
@@ -98,7 +98,7 @@ class SSEStore {
 
   onUpdateEventSuccess(payload) {
     this.events.data.splice(payload[0], 1, payload[1]);
-    this.setStatus({ message: 'Successfully updated a go link' });
+    this.setStatus({ message: 'Successfully updated an event.' });
   }
 
   onUpdateEventFailed(err ) {
@@ -108,7 +108,7 @@ class SSEStore {
   onDestroyEventSuccess(payload) {
     this.events.data.splice(payload[0], 1);
     this.events.total--;
-    this.setStatus({ message: 'Successfully deleted a go link' });
+    this.setStatus({ message: 'Successfully deleted an event.' });
   }
 
   onDestroyEventFailed(err) {
