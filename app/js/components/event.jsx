@@ -4,6 +4,7 @@ import React from 'react';
 import SSEStore from '../stores/sse';
 import DestroyModal from './destroy-modal';
 import FormModal from './form-modal';
+import moment from 'moment-timezone';
 
 export default class Event extends React.Component {
 
@@ -66,11 +67,22 @@ export default class Event extends React.Component {
   render() {
     return(
       <div className='list-item'>
-        <div className='list-title'>
-          {this.props.event.name}
+        <div className='pull-left'>
+          <div className='list-title'>
+            {this.props.event.name}
+
+          </div>
+          <br />
+          <div className='list-description'>{this.props.event.description} </div>
+          <div className='list-description'>
+            {moment(this.props.event.startDate).format('MM/DD/YY h:mm A')} - {moment(this.props.event.endDate).format('MM/DD/YY h:mm A')} @ {this.props.event.location}
+          </div>
         </div>
 
-        {this.renderEditButtons()}
+        <div className='pull-right'>
+
+          {this.renderEditButtons()}
+        </div>
         <DestroyModal
           show={this.state.showDestroy}
           close={this.hideDestroy}
