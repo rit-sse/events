@@ -42,7 +42,6 @@ export default class FormModal extends React.Component {
 
     event.startDate = moment.tz(this.state.startPicker.getLocalDate(), 'America/New_York').utc().toDate();
     event.endDate = moment.tz(this.state.endPicker.getLocalDate(), 'America/New_York').utc().toDate();
-    console.log(event);
     this.props.submit(event);
   }
 
