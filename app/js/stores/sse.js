@@ -74,8 +74,6 @@ class SSEStore {
 
   onGetEventsSuccess(payload) {
     this.events = payload;
-    this.filters.page = payload.currentPage;
-    this.filters.perPage = payload.perPage;
     this.status = null;
     this.err = null;
     History.pushState(this.filters, 'SSE Events', `?${querystring.stringify(this.filters)}`);
@@ -118,9 +116,15 @@ class SSEStore {
   onSetCommittee(committee) {
     this.filters.committee = committee;
   }
+
   onSetWhen(when) {
     this.filters.when = when;
   }
+
+  onSetPage(page) {
+    this.filters.page = page;
+  }
+
 }
 
 export default alt.createStore(SSEStore, 'SSEStore');
