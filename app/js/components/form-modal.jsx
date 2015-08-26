@@ -29,8 +29,8 @@ export default class FormModal extends React.Component {
 
     const date = new Date();
 
-    startPicker.setDate(new Date(this.props.event.startDate) || date);
-    endPicker.setDate(new Date(this.props.event.endDate) || date.setHours(date.getHours() + 1));
+    startPicker.setLocalDate(new Date(this.props.event.startDate) || date);
+    endPicker.setLocalDate(new Date(this.props.event.endDate) || date.setHours(date.getHours() + 1));
   }
 
   submit() {
