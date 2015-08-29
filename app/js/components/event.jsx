@@ -18,6 +18,7 @@ export default class Event extends React.Component {
     this.edit = this.edit.bind(this);
     this.showEdit = this.showEdit.bind(this);
     this.hideEdit = this.hideEdit.bind(this);
+    this.formatDateRange = this.formatDateRange.bind(this);
     this.renderEditButtons = this.renderEditButtons.bind(this);
   }
 
@@ -47,6 +48,17 @@ export default class Event extends React.Component {
     this.setState({ showEdit: false });
   }
 
+  formatDateRange() {
+    const date = 'dddd M/DD';
+    const time = 'h:mm a';
+    let dateString = moment(this.props.event.startDate).format(date + ', ' + time);
+    if (moment(this.props.event.startDate).format(date) !== moment(this.props.event.endDate).format(date)) {
+      dateString += ' - ' + moment(this.props.event.endDate).format(date + ', ' + time);
+    } else {
+      dateString += ' - ' + moment(this.props.event.endDate).format(time);
+    }
+    return dateString;
+  }
 
   renderEditButtons() {
     if (this.props.loggedIn) {
@@ -66,23 +78,25 @@ export default class Event extends React.Component {
 
   render() {
     return(
-      <div className='list-item'>
-        <div className='pull-left'>
-          <div className='list-title'>
-            {this.props.event.name}
+      <div className='event-preview-wrapper'>
+          <div className='event-preview'>
+            <div className='row flex-container'>
+              <div className='span10'>
+                <h3 className='event-title'>{this.props.event.name}</h3>
+                <div className='event-info'>
+                  {this.formatDateRange()}
+                </div>
+                <div className='event-description'>
+                  {this.props.event.description}
+                </div>
+              </div>
+              <div className='span2' style={{ marginLeft: 0 }} >
+                {this.renderEditButtons()}
+              </div>
+            </div>
 
-          </div>
-          <br />
-          <div className='list-description'>{this.props.event.description} </div>
-          <div className='list-description'>
-            {moment(this.props.event.startDate).format('MM/DD/YY h:mm A')} - {moment(this.props.event.endDate).format('MM/DD/YY h:mm A')} @ {this.props.event.location}
-          </div>
         </div>
 
-        <div className='pull-right'>
-
-          {this.renderEditButtons()}
-        </div>
         <DestroyModal
           show={this.state.showDestroy}
           close={this.hideDestroy}

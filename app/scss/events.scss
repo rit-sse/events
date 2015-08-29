@@ -7,11 +7,43 @@
   margin-bottom: 20px;
 }
 
+.flex-container {
+  display: flex;
+  align-items: center;
+}
+
 .event-preview
 {
+  border-left: 10px solid #1e5799;
   padding-left: 10px;
   background: #fff;
+
+  &:hover {
+    background: #ddd;
+
+    .edit-links {
+      display: inherit;
+    }
+  }
+
+  .edit-links {
+    font-size: 12px;
+    float: right;
+    display: none;
+
+    a {
+      display: inline-block;
+      margin-left: 10px;
+
+      &:first-child { margin-left: 0; }
+    }
+  }
 }
+
+.event-title {
+  margin-top: 2px;
+}
+
 
 h3 a
 {
