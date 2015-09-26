@@ -78,7 +78,7 @@ export default class Event extends React.Component {
 
   render() {
     return(
-      <div className='event-preview-wrapper'>
+      <div id={this.props.event.id} className='event-preview-wrapper'>
           <div className='event-preview'>
             <div className='row flex-container'>
               <div className='span10'>
