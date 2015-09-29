@@ -4,7 +4,6 @@ import React from 'react';
 import Filter from './filter';
 import SSEStore from '../stores/sse';
 import LogIn from './log-in';
-import NavTabs from './nav-tabs';
 import Notification from './notification';
 import EventList from './event-list';
 import FormModal from './form-modal';
@@ -62,7 +61,6 @@ export default class GoApp extends React.Component {
           <Filter {...this.props} />
         </div>
         <br/>
-        <NavTabs {...this.props} />
         <EventList {...this.props} />
         <FormModal
           title='Create'
