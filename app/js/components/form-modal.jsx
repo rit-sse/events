@@ -106,7 +106,7 @@ export default class FormModal extends React.Component {
             <label className='control-label' htmlFor='committee'>Committee</label>
             <div className='controls'>
               <select id='committee' defaultValue={this.props.event.committeeId} ref='committeeId'>
-                {this.props.committees.data.map(committee => <option key={committee.id} value={committee.id}>{committee.name}</option>)}
+                {this.props.committees.map(committee => <option key={committee.id} value={committee.id}>{committee.name}</option>)}
               </select>
             </div>
           </div>
