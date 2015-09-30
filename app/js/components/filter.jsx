@@ -20,7 +20,7 @@ export default class Filter extends React.Component {
       <div className='filter'>
         <span className='entry'>Filter by:</span>
         <span className={classnames('entry', { active: !this.props.filters.committee })}><a onClick={this.select.bind(this, null)}>All</a></span>
-        {this.props.committees.data.map(committee => {
+        {this.props.committees.map(committee => {
           return (
             <span
               key={committee.id}

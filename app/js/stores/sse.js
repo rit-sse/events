@@ -15,7 +15,7 @@ class SSEStore {
     this.loggedIn = false;
     this.err = null;
     this.events = { data: [] };
-    this.committees = { data: [] };
+    this.committees = [];
     this.filters = querystring.parse(location.search.replace('?', ''));
     this.filters.when = this.filters.when || 'future';
     this.status = null;
