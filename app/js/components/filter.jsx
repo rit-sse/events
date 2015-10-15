@@ -24,9 +24,9 @@ export default class Filter extends React.Component {
           return (
             <span
               key={committee.id}
-              className={classnames('entry', { active: this.props.filters.committee === committee.id })}
+              className={classnames('entry', { active: this.props.filters.committee === committee.name })}
             >
-              <a onClick={this.select.bind(null, committee.id)}>{committee.name}</a>
+              <a onClick={this.select.bind(null, committee.name)}>{committee.name}</a>
             </span>
           );
         })}

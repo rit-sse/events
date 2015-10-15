@@ -34,7 +34,7 @@ export default class FormModal extends React.Component {
   }
 
   submit() {
-    const event = ['name', 'description', 'location', 'image', 'committeeId']
+    const event = ['name', 'description', 'location', 'image', 'committeeName']
       .reduce((prev, key) => {
         prev[key] = this.refs[key].getDOMNode().value || null;
         return prev;
@@ -105,8 +105,8 @@ export default class FormModal extends React.Component {
           <div className='control-group'>
             <label className='control-label' htmlFor='committee'>Committee</label>
             <div className='controls'>
-              <select id='committee' defaultValue={this.props.event.committeeId} ref='committeeId'>
-                {this.props.committees.map(committee => <option key={committee.id} value={committee.id}>{committee.name}</option>)}
+              <select id='committee' defaultValue={this.props.event.committeeName} ref='committeeName'>
+                {this.props.committees.map(committee => <option key={committee.name} value={committee.name}>{committee.name}</option>)}
               </select>
             </div>
           </div>
