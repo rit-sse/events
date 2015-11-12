@@ -10,7 +10,7 @@ export default class Event extends React.Component {
 
   constructor() {
     super();
-    this.state = { showDestroy: false, event };
+    this.state = { showDestroy: false };
 
     this.destroy = this.destroy.bind(this);
     this.showDestroy = this.showDestroy.bind(this);
