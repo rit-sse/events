@@ -91,7 +91,7 @@ class SSEStore {
   }
 
   onCreateEventFailed(resp) {
-    this.setError(resp)
+    this.setError(resp);
   }
 
   onUpdateEventSuccess(payload) {
