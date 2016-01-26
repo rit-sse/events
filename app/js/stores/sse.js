@@ -31,12 +31,11 @@ class SSEStore {
   }
 
   setError(err) {
-    console.log("Error");
     if ( err.message === 'Unauthorized' ) {
       this.err = { message: 'Token expired. Try logging in again.' };
       this.loggedIn = false;
     } else {
-      this.err = new Error(err.body);
+      this.err = err.text();
     }
     this.status = null;
   }
@@ -81,7 +80,6 @@ class SSEStore {
   }
 
   onGetEventsFailed(err) {
-    console.log("Full err", err);
     this.setError(err);
   }
 
@@ -93,9 +91,7 @@ class SSEStore {
   }
 
   onCreateEventFailed(err) {
-    console.log("onCreateEventFailed", err);
     this.setError(err);
-    return true;
   }
 
   onUpdateEventSuccess(payload) {
