@@ -31,11 +31,11 @@ class SSEStore {
   }
 
   setError(err) {
-    if ( err.message === 'Unauthorized' ) {
-      this.err = { message: 'Token expired. Try logging in again.' };
+    if ( err === 'Unauthorized' ) {
+      this.err = {message: 'Token expired. Try logging in again.'};
       this.loggedIn = false;
     } else {
-      this.err = err.text();
+      this.err = {message: err};
     }
     this.status = null;
   }
@@ -90,8 +90,8 @@ class SSEStore {
     this.setStatus({ message: 'Successfully created an event.' });
   }
 
-  onCreateEventFailed(err) {
-    this.setError(err);
+  onCreateEventFailed(resp) {
+    this.setError(resp)
   }
 
   onUpdateEventSuccess(payload) {
@@ -99,7 +99,7 @@ class SSEStore {
     this.setStatus({ message: 'Successfully updated an event.' });
   }
 
-  onUpdateEventFailed(err ) {
+  onUpdateEventFailed(err) {
     this.setError(err);
   }
 
