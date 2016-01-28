@@ -32,7 +32,7 @@ class SSEStore {
 
   setError(err) {
     if ( err.message === 'Unauthorized' ) {
-      this.err = 'Token expired. Try logging in again.';
+      this.err = { message: 'Token expired. Try logging in again.' };
       this.loggedIn = false;
     } else {
       this.err = err;
