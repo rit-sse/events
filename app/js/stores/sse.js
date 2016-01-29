@@ -90,8 +90,8 @@ class SSEStore {
     this.setStatus({ message: 'Successfully created an event.' });
   }
 
-  onCreateEventFailed(err ) {
-    this.setError(err);
+  onCreateEventFailed(resp) {
+    this.setError(resp);
   }
 
   onUpdateEventSuccess(payload) {
@@ -99,7 +99,7 @@ class SSEStore {
     this.setStatus({ message: 'Successfully updated an event.' });
   }
 
-  onUpdateEventFailed(err ) {
+  onUpdateEventFailed(err) {
     this.setError(err);
   }
 
