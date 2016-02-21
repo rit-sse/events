@@ -1,12 +1,10 @@
-'use strict';
-
 import React from 'react';
 import Modal from './modal';
 
 export default class DestroyModal extends React.Component {
 
   render() {
-    return(
+    return (
       <Modal
         show={this.props.show}
         close={this.props.close}

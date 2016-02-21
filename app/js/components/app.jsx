@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import Filter from './filter';
 import SSEStore from '../stores/sse';
@@ -51,7 +49,7 @@ export default class GoApp extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <div id='content_wrapper'>
         <Notification alertType='success' notice={this.props.status} />
         <Notification alertType='danger' notice={this.props.err} />
