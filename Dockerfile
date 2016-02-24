@@ -21,6 +21,7 @@ RUN npm run build
 RUN npm install http-server -g
 
 WORKDIR /app/dist
+RUN mkdir events
+RUN mv * ./events || exit 0
 EXPOSE 8000
-WORKDIR /app/_site
 CMD http-server -p 8000 -a 0.0.0.0 -d false
