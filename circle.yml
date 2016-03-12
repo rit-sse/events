@@ -2,6 +2,10 @@ machine:
   node:
     version: 5.5.0
 
+dependencies:
+  post:
+    - npm install eslint #actual garbage
+
 # We'll write tests one day...for now we'll just run the linter
 test:
   override:
