@@ -1,12 +1,10 @@
-'use strict';
-
 import React from 'react';
 import classnames from 'classnames';
 
 export default class Modal extends React.Component {
 
   render() {
-    return(
+    return (
       <div className={classnames('modal', { hide: !this.props.show })}>
         <div className='modal-header'>
           <button type='button' className='close' aria-hidden='true' onClick={this.props.close}>&times;</button>

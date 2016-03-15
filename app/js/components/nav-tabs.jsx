@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import classnames from 'classnames';
 import SSEStore from '../stores/sse';
@@ -16,7 +14,7 @@ export default class NavTabs extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <ul className='nav nav-tabs'>
         <li className={classnames({ active: this.props.filters.when === 'future' })}>
           <a onClick={this.select.bind(this, 'future')}>Future</a>

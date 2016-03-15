@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import classnames from 'classnames';
 import SSEStore from '../stores/sse';
@@ -16,7 +14,7 @@ export default class Filter extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <div className='filter'>
         <span className='entry'>Filter by:</span>
         <span className={classnames('entry', { active: !this.props.filters.committee })}><a onClick={this.select.bind(this, null)}>All</a></span>

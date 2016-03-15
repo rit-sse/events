@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import Modal from './modal';
 import '../bootstrap-datetimepicker';
@@ -46,7 +44,7 @@ export default class FormModal extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <Modal
         show={this.props.show}
         close={this.props.close}

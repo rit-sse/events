@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import SSEStore from '../stores/sse';
 import DestroyModal from './destroy-modal';
@@ -77,7 +75,7 @@ export default class Event extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <div id={this.props.event.id} className='event-preview-wrapper'>
           <div className='event-preview'>
             <div className='row flex-container'>

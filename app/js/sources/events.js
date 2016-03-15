@@ -1,5 +1,3 @@
-'use strict';
-
 import api from '../api';
 import EventsActions from '../actions/events';
 

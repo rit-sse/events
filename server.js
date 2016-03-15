@@ -1,8 +1,7 @@
 'use strict';
 
-const express = require('express'),
-      path    = require('path')
-;
+import express from 'express';
+import path from 'path';
 
 const app = express();
 
