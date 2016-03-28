@@ -5,6 +5,7 @@ import API from '../api';
 export default class LogIn extends React.Component {
   constructor() {
     super();
+    this.state = { disable_login: true };
   }
 
   componentDidMount() {
@@ -25,7 +26,7 @@ export default class LogIn extends React.Component {
 
   render() {
     return (
-      <button id='login' className='btn btn-primary' ref='button'>
+      <button disabled={this.state.disable_login} id='login' className='btn btn-primary' ref='button'>
         <i className='fa fa-google'></i> Sign In
       </button>
     );
