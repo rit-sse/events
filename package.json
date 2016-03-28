@@ -10,7 +10,7 @@
   ],
   "main": "server.js",
   "scripts": {
-    "start": "babel-node ./bin/www",
+    "start": "babel-node server.js",
     "watch": "gulp",
     "build": "gulp build",
     "lint": "eslint . --ext .jsx,.js"
