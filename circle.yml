@@ -4,18 +4,19 @@ machine:
 
 test:
   pre:
+    - docker login -u $DOCKER_USER -p $DOCKER_PASS -e tech@sse.rit.edu
     - docker build -t ritsse/events:$CIRCLE_BRANCH .
   override:
-    - docker run -it ritsse/events:$CIRCLE_BRANCH npm run test 
+    - docker run -it ritsse/events:$CIRCLE_BRANCH npm run lint
 
 deployment:
   development:
     branch: devlop
     commands:
-      - docker login -u $DOCKER_USER -p $DOCKER_PASS -e tech@sse.rit.edu
       - docker push ritsse/events:$CIRCLE_BRANCH
   master:
     branch: master
     owner: rit-sse
     commands:
-      - ssh deploy@$SSE_HOST 'cd /docker && docker-compose restart events nginx'
+      - docker tag ritsse/events:$CIRCLE_BRANCH ritsse/events
+      - docker push ritsse/events 
