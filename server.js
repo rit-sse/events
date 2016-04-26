@@ -1,5 +1,3 @@
-'use strict';
-
 import express from 'express';
 import path from 'path';
 
@@ -11,6 +9,6 @@ const server = app.listen(process.env.PORT || 3000, () => {
 
 app.use('/events', express.static('dist'));
 
-app.use('/events/*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+app.use('/events/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
