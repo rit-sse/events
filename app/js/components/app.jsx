@@ -55,7 +55,7 @@ export default class GoApp extends React.Component {
         <Notification alertType='danger' notice={this.props.err} />
         <div className='pull-right'>{this.renderSignIn()}</div>
         <h1>Events</h1>
-        <div className='display-wrapper'>
+        <div className='display-wrapper clearfix'>
           <Filter {...this.props} />
         </div>
         <br/>
