@@ -1,22 +1,16 @@
 machine:
-  services:
-    - docker
+  node:
+    version: 5.5.0
 
+# We'll write tests one day...for now we'll just run the linter
 test:
-  pre:
-    - docker login -u $DOCKER_USER -p $DOCKER_PASS -e tech@sse.rit.edu
-    - docker build -t ritsse/events:$CIRCLE_BRANCH .
   override:
-    - docker run -it ritsse/events:$CIRCLE_BRANCH npm run lint
+    - npm run lint
+    - npm run build
 
 deployment:
-  development:
-    branch: devlop
-    commands:
-      - docker push ritsse/events:$CIRCLE_BRANCH
   master:
-    branch: master
+    branch: devlop
     owner: rit-sse
     commands:
-      - docker tag ritsse/events:$CIRCLE_BRANCH ritsse/events
-      - docker push ritsse/events 
+      - rsync -r dist/ timbrook@ssedev.se.rit.edu:/var/www/events/
