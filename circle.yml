@@ -13,4 +13,4 @@ deployment:
     branch: devlop
     owner: rit-sse
     commands:
-      - rsync -r dist/ timbrook@ssedev.se.rit.edu:/var/www/events/
+      - rsync -r dist/ deploy@ssedev.se.rit.edu:/var/www/events/
