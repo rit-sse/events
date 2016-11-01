@@ -10,5 +10,5 @@ const server = app.listen(process.env.PORT || 3000, () => {
 app.use('/events', express.static('dist'));
 
 app.use('/events/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname, 'app', 'index.html'));
 });
