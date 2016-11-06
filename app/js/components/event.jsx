@@ -85,7 +85,7 @@ export default class Event extends React.Component {
                   {this.formatDateRange()}
                 </div>
                 <div className='event-info'>
-                  {this.props.event.location}
+                  Location: {this.props.event.location}
                 </div>
                 <div className='event-description'>
                   {this.props.event.description}
